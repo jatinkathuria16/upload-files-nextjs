@@ -25,7 +25,6 @@ import { DialogDescription } from '../../../components/ui/dialog';
 export function FileUploader() {
   const formRef = useRef(null);
   const [failed, setFailed] = useState(null);
-  console.log(failed);
   return (
     <div className="w-[450px]">
       <Card>

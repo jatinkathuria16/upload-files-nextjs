@@ -4,6 +4,7 @@
 A single button dialog that allows you to upload files <=5MB to Vercel's blob storage.
 1) Supports multiple uploads
 2) Remove uploads
+3) Consideration: 5MB===5*1000*1000bytes
 
 Control Flow: 
 1. call a third party API (example.com) when the upload begins ✅
@@ -17,7 +18,7 @@ Control Flow:
 10. Put a trash icon next to each link in the list so that you can delete it.✅
 
 
-Working link: https://upload-files-nextjs-6b42x8jzv-jatins-projects-65fb955e.vercel.app/
+Working link: https://upload-files-nextjs-nfo7mw8ja-jatins-projects-65fb955e.vercel.app/
 
 
 Knows Issues with vercel deplyments
