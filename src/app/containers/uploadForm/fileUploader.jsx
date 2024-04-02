@@ -8,7 +8,7 @@ import { uploadMultipleFiles } from '../../actions/actions';
 
 // Custom Components
 import FormButton from './formbutton';
-import InfoModal from './infoModal';
+import InfoModal from '../infoModal';
 
 // Styles
 import {
@@ -25,7 +25,7 @@ import { DialogDescription } from '../../../components/ui/dialog';
 export function FileUploader() {
   const formRef = useRef(null);
   const [failed, setFailed] = useState(null);
-
+  console.log(failed);
   return (
     <div className="w-[450px]">
       <Card>
@@ -64,22 +64,20 @@ export function FileUploader() {
         <CardFooter>*Files above 5mb would be rejected</CardFooter>
       </Card>
       <InfoModal
-        visible={!!failed}
+        visible={!!failed?.length}
         onChange={() => setFailed(null)}
         title="Upload Failed"
       >
-        {failed
-          ? failed.map((item, i) => (
-              <div className="mb-2" key={i}>
-                {item?.name ? (
-                  <DialogDescription key={i}>
-                    {i + 1}. {item.name}
-                  </DialogDescription>
-                ) : null}
-                <DialogDescription key={i}>{item.message}</DialogDescription>
-              </div>
-            ))
-          : null}
+        {failed?.map((item, i) => (
+          <div className="mb-2" key={i}>
+            {item?.name ? (
+              <DialogDescription key={i}>
+                {i + 1}. {item.name}
+              </DialogDescription>
+            ) : null}
+            <DialogDescription key={i}>{item.message}</DialogDescription>
+          </div>
+        ))}
       </InfoModal>
     </div>
   );

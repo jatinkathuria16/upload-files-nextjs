@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '../../../components/ui/dialog';
+} from '../../components/ui/dialog';
 
 function InfoModal({ visible, onChange, title, children }) {
   return (
