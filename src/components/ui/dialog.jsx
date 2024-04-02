@@ -1,5 +1,4 @@
 /* eslint-disable tailwindcss/no-unnecessary-arbitrary-value */
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/prop-types */
 
 'use client';

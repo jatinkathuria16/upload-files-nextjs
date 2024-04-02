@@ -5,6 +5,7 @@ import { List } from './containers/listFiles/list';
 import { Card, CardHeader, CardTitle } from '../components/ui/card';
 import Loading from './loading';
 
+export const dynamic = 'force-dynamic';
 function HomePage() {
   return (
     <section
