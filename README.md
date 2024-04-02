@@ -30,17 +30,13 @@ Workaround is to fork and create a new vercel account and a blob store using the
 
 
 
-## Acknowledgements
 
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
 
 ## Demo
 
 
-<iframe src="https://giphy.com/embed/bLYgcPFEvpgxDZlwQG" width="480" height="312" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/bLYgcPFEvpgxDZlwQG">via GIPHY</a></p>
+![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHlubWdvNDRsd2drNTV4Nng0Y3d1Ynd5cXhldjg1em9pb3J2MDYzYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bLYgcPFEvpgxDZlwQG/giphy.gif)
 ## Run Locally
 
 Clone the project
