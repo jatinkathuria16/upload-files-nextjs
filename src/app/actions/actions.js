@@ -76,7 +76,5 @@ export async function uploadMultipleFiles(formData) {
       unuploadedFiles.push(error);
     }
   }
-  console.log('Uploaded Files:', uploadedFiles);
-  console.log('Unuploaded Files:', unuploadedFiles);
   return unuploadedFiles;
 }
