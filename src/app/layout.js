@@ -1,6 +1,7 @@
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 import { cn } from '../lib/utils';
+import { Toaster } from '../components/ui/toaster';
 
 export const metadata = {
   title: 'Intelligent File Upload',
@@ -22,7 +23,8 @@ export default function RootLayout({ children }) {
           fontSans.variable,
         )}
       >
-        {children}
+        <main>{children}</main>
+        <Toaster />
       </body>
     </html>
   );
