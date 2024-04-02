@@ -17,7 +17,7 @@ Control Flow:
 10. Put a trash icon next to each link in the list so that you can delete it.✅
 
 
-Working link: 
+Working link: https://upload-files-nextjs-6b42x8jzv-jatins-projects-65fb955e.vercel.app/
 
 
 Knows Issues with vercel deplyments
@@ -62,9 +62,8 @@ Start the server
 ```bash
   npm  run dev
 ```
-
-install: sudo npm i -g vercel
-update:  sudo npm i -g vercel@latest
-link github with sudo vercel link   
-create a project, create a store 
-sudo vercel env pull to develop locally
+1. install: sudo npm i -g vercel
+2. update:  sudo npm i -g vercel@latest
+3. link github with sudo vercel link   
+4. create a project, create a store 
+5. sudo vercel env pull to develop locally
