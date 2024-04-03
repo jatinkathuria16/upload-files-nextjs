@@ -2,7 +2,7 @@
 
 'use server';
 
-import { put } from '@vercel/blob';
+import { copy, put } from '@vercel/blob';
 import { revalidatePath } from 'next/cache';
 
 const API_URL = 'https://dummyjson.com/posts/';
@@ -73,8 +73,30 @@ export async function uploadMultipleFiles(formData) {
       uploadedFiles.push(blob);
     } catch (error) {
       i += 1;
-      unuploadedFiles.push(error);
+      unuploadedFiles.push({
+        message: error.message,
+        name: file?.name,
+        size: file?.size,
+        type: file?.type,
+      });
     }
   }
   return unuploadedFiles;
+}
+
+export async function renameFile(formData, file) {
+  const newName = formData.get('name');
+  const { url } = file;
+  try {
+    await copy(url, newName, { access: 'public' });
+    revalidatePath('/');
+    return 'revalidate';
+  } catch (error) {
+    throw {
+      message: error.message,
+      name: file?.name,
+      size: file?.size,
+      type: file?.type,
+    };
+  }
 }

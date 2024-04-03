@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable react/prop-types */
 
 'use client';
@@ -10,9 +11,11 @@ import { Button } from '../../../components/ui/button';
 import InfoModal from '../infoModal';
 import { Input } from '../../../components/ui/input';
 import { useToast } from '../../../components/ui/use-toast';
+import { renameFile } from '../../actions/actions';
+import FormButton from '../../sharedUI/formbutton';
 
 function ListFilesButtons({ file, disable, setDisable }) {
-  const [showRenameModal, setShowRenameModal] = useState(false);
+  const [renameInfo, setRenameInfo] = useState(false);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
@@ -39,13 +42,58 @@ function ListFilesButtons({ file, disable, setDisable }) {
       setDisable(false);
     }
   };
+
+  const handleRename = async (formData) => {
+    const newName = formData.get('name');
+
+    if (newName === file?.pathname) {
+      toast({
+        variant: 'destructive',
+        title: 'Invalid Name',
+        description:
+          'Please enter a valid name that is different from the current one.',
+      });
+
+      return;
+    }
+    const isValidFileName =
+      // eslint-disable-next-line no-control-regex
+      /^(?!^(?:COM\d|LPT\d|PRN|AUX|NUL|CON)(?:\..*)?$)[^\\\/:*?"<>|\x00-\x1F]*[^\\\/:*?"<>|\x00-\x1F\.\\\/]$/i.test(
+        newName,
+      );
+
+    if (!isValidFileName) {
+      toast({
+        variant: 'destructive',
+        title: 'Invalid File Name',
+        description:
+          'Please enter a valid file name containing only alphanumeric characters, dashes, underscores, or dots.',
+      });
+      return;
+    }
+
+    try {
+      const clientAction = await renameFile(formData, renameInfo);
+      if (clientAction === 'revalidate') {
+        setRenameInfo(null);
+        handleDelete(file);
+      }
+    } catch (e) {
+      toast({
+        variant: 'destructive',
+        title: 'Uh oh! Something went wrong.',
+        description: e?.message,
+      });
+    }
+  };
+
   return (
     <>
       <CardDescription className="flex gap-2.5">
         <Button
           variant="ghost"
           onClick={() => {
-            setShowRenameModal(file);
+            setRenameInfo(file);
           }}
           disabled={disable}
         >
@@ -64,23 +112,25 @@ function ListFilesButtons({ file, disable, setDisable }) {
         </Button>
       </CardDescription>
       <InfoModal
-        visible={showRenameModal}
-        onChange={() => setShowRenameModal(null)}
-        title={`Rename ${showRenameModal?.pathname}`}
+        visible={renameInfo}
+        onChange={() => setRenameInfo(null)}
+        title={`Rename ${renameInfo?.pathname}`}
       >
         <CardDescription>Set new name</CardDescription>
-        <Input type="text" id="name" name="fileName" required />
-        <div className="flex  gap-2.5">
-          <Button className="disable-button mt-4 min-w-20">Save</Button>
-          <Button
-            className="disable-button mt-4 min-w-20"
-            onClick={() => {
-              setShowRenameModal(null);
-            }}
-          >
-            Cancel
-          </Button>
-        </div>
+        <form action={handleRename}>
+          <Input type="text" id="name" name="name" required />
+          <div className="flex  gap-2.5">
+            <FormButton title="Save" className="disable-button" />
+            <Button
+              className="disable-button mt-4 min-w-20"
+              onClick={() => {
+                setRenameInfo(null);
+              }}
+            >
+              Cancel
+            </Button>
+          </div>
+        </form>
       </InfoModal>
     </>
   );

@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 import { uploadMultipleFiles } from '../../actions/actions';
 
 // Custom Components
-import FormButton from './formbutton';
+import FormButton from '../../sharedUI/formbutton';
 import InfoModal from '../infoModal';
 
 // Styles
@@ -25,6 +25,7 @@ import { DialogDescription } from '../../../components/ui/dialog';
 export function FileUploader() {
   const formRef = useRef(null);
   const [failed, setFailed] = useState(null);
+  console.log(failed);
   return (
     <div className="w-[450px]">
       <Card>
@@ -57,7 +58,7 @@ export function FileUploader() {
           >
             <CardDescription>Files</CardDescription>
             <Input type="file" id="image" name="file" required multiple />
-            <FormButton />
+            <FormButton title="Upload" />
           </form>
         </CardContent>
         <CardFooter>*Files above 5mb would be rejected</CardFooter>
