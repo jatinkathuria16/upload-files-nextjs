@@ -73,12 +73,7 @@ export async function uploadMultipleFiles(formData) {
       uploadedFiles.push(blob);
     } catch (error) {
       i += 1;
-      unuploadedFiles.push({
-        message: error.message,
-        name: file?.name,
-        size: file?.size,
-        type: file?.type,
-      });
+      unuploadedFiles.push(error);
     }
   }
   return unuploadedFiles;

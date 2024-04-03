@@ -118,10 +118,25 @@ function ListFilesButtons({ file, disable, setDisable }) {
       >
         <CardDescription>Set new name</CardDescription>
         <form action={handleRename}>
-          <Input type="text" id="name" name="name" required />
+          <Input
+            type="text"
+            id="name"
+            name="name"
+            required
+            autoFocus
+            defaultValue={
+              file?.pathname.includes('.')
+                ? file?.pathname.slice(file?.pathname.lastIndexOf('.'))
+                : ''
+            }
+            onFocus={(e) => {
+              e.target.setSelectionRange(0, 0);
+            }}
+          />
           <div className="flex  gap-2.5">
             <FormButton title="Save" className="disable-button" />
             <Button
+              type="button"
               className="disable-button mt-4 min-w-20"
               onClick={() => {
                 setRenameInfo(null);
