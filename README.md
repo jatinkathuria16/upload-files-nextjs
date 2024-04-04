@@ -4,7 +4,7 @@
 A single button dialog that allows you to upload files <=5MB to Vercel's blob storage.
 1) Supports multiple uploads
 2) Remove uploads
-3) Consideration: 5MB===5*1000*1000bytes
+3) Consideration: 5MB === 5 * 1000 * 1000 bytes
 
 Control Flow: 
 1. call a third party API (example.com) when the upload begins ✅
@@ -22,20 +22,11 @@ Working link: https://upload-files-nextjs-eight.vercel.app/
 
 
 Knows Issues with vercel deplyments
-1. Skeleton loaders works fine on local, sometime do not show up on vercel. 
-2. Vercel Blob Out going bandwidth limit. https://github.com/orgs/vercel/discussions/4662
+1. Vercel Blob Out going bandwidth limit. https://github.com/orgs/vercel/discussions/4662
 
 Workaround is to fork and create a new vercel account and a blob store using these commands: 
-  
-
-
-
-
-
-
 
 ## Demo
-
 
 ![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHlubWdvNDRsd2drNTV4Nng0Y3d1Ynd5cXhldjg1em9pb3J2MDYzYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bLYgcPFEvpgxDZlwQG/giphy.gif)
 ## Run Locally
@@ -63,6 +54,7 @@ Start the server
 ```bash
   npm  run dev
 ```
+Steps to Link vercel locally 
 1. install: sudo npm i -g vercel
 2. update:  sudo npm i -g vercel@latest
 3. link github with sudo vercel link   
