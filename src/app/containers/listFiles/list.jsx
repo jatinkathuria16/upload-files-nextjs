@@ -18,6 +18,7 @@ export async function List() {
     files = await allFiles();
   } catch (e) {
     console.log(e);
+    console.log('Error fetching files');
   }
 
   return (
