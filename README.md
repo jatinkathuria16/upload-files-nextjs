@@ -15,7 +15,7 @@ Control Flow:
 6. Put a pencil icon to each link in the list to rename the file. A modal with Save and Cancel buttons should open for the rename.✅
 7. Show a skeleton instead of the list of files when the list is still loading.✅
 8. add some fake delay if it loads too fast just to show the effect.✅
-10. Put a trash icon next to each link in the list so that you can delete it.✅
+10. Put a trash icon next to each link in the list so that you can delete it.
 
 
 Working link: https://upload-files-nextjs-eight.vercel.app/
